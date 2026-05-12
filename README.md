@@ -9,8 +9,8 @@ ember accent, dual-mode (light + dark, equal priority).
 
 ## Links
 
-- **Showcase site** — _deployed via Vercel; URL updated after first deploy_
-- **Storybook** — _deployed via Vercel; URL updated after first deploy_
+- **Showcase site** — https://ember-design-system.vercel.app
+- **Storybook** — https://ember-storybook.vercel.app
 - **Source brief** — [design-brief.md](./design-brief.md)
 
 ## Stack
