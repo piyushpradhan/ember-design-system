@@ -1,0 +1,97 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 720px;
+  margin-bottom: var(--space-4);
+}
+
+.pageTitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-weight: var(--font-bold);
+  margin: 0;
+}
+
+.pageSub {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-6);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sectionTitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.sectionDescription {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sectionBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--space-4);
+}
+
+.demo {
+  position: relative;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.demoBody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-start;
+  flex: 1;
+}
+
+.demoLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--border-subtle);
+}

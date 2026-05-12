@@ -1,0 +1,83 @@
+.wrap {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: transparent;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.input:hover + .box:not([disabled]) { border-color: var(--accent-ember-500); }
+
+.input:focus-visible + .box {
+  box-shadow: var(--focus-ring);
+}
+
+.input:checked + .box,
+.input[aria-checked='mixed'] + .box {
+  background: var(--accent-ember-500);
+  border-color: var(--accent-ember-500);
+  color: #ffffff;
+}
+
+.input:disabled + .box {
+  background: var(--bg-subtle);
+  border-color: var(--border-default);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.input:disabled:checked + .box {
+  background: var(--bg-muted);
+  border-color: var(--bg-muted);
+}
+
+.withLabel {
+  align-items: flex-start;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.label {
+  color: var(--text-primary);
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}

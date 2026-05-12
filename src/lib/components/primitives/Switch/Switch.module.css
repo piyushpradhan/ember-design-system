@@ -1,0 +1,71 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.track {
+  display: inline-block;
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+  transition: background var(--duration-base) var(--easing-standard);
+  position: relative;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform var(--duration-base) var(--easing-standard);
+  box-shadow: var(--shadow-sm);
+}
+
+.size-md .track { width: 36px; height: 20px; }
+.size-md .thumb { width: 16px; height: 16px; }
+.size-md .input:checked ~ .track .thumb { transform: translateX(16px); }
+
+.size-sm .track { width: 28px; height: 16px; }
+.size-sm .thumb { width: 12px; height: 12px; }
+.size-sm .input:checked ~ .track .thumb { transform: translateX(12px); }
+
+.input:checked ~ .track {
+  background: var(--accent-ember-500);
+}
+
+.input:focus-visible ~ .track {
+  box-shadow: var(--focus-ring);
+}
+
+.input:disabled ~ .track {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.label { color: var(--text-primary); }
+.description { color: var(--text-secondary); font-size: var(--text-xs); }

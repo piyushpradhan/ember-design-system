@@ -1,0 +1,88 @@
+.wrap {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.dot {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  transition: all var(--duration-fast) var(--easing-standard);
+  position: relative;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background var(--duration-fast) var(--easing-standard);
+}
+
+.input:hover + .dot:not([disabled]) {
+  border-color: var(--accent-ember-500);
+}
+
+.input:focus-visible + .dot {
+  box-shadow: var(--focus-ring);
+}
+
+.input:checked + .dot {
+  border-color: var(--accent-ember-500);
+}
+
+.input:checked + .dot::after {
+  background: var(--accent-ember-500);
+}
+
+.input:disabled + .dot {
+  background: var(--bg-subtle);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.label { color: var(--text-primary); }
+.description { color: var(--text-secondary); font-size: var(--text-xs); }
+
+.group {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.orient-vertical { flex-direction: column; }
+.orient-horizontal { flex-direction: row; flex-wrap: wrap; }

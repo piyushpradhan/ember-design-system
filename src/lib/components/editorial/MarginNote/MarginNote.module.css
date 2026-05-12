@@ -1,0 +1,46 @@
+.note {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  padding-left: var(--space-3);
+  margin: var(--space-2) 0;
+  border-left: 2px solid var(--border-default);
+  max-width: 220px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-ember-500);
+  margin-bottom: 4px;
+}
+
+.body {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .note {
+    position: relative;
+  }
+  .side-right {
+    float: right;
+    margin-right: -240px;
+    width: 200px;
+  }
+  .side-left {
+    float: left;
+    margin-left: -240px;
+    width: 200px;
+    text-align: right;
+    border-left: none;
+    border-right: 2px solid var(--border-default);
+    padding-left: 0;
+    padding-right: var(--space-3);
+  }
+}

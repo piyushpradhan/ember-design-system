@@ -1,0 +1,68 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.target {
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center;
+  background: var(--text-primary);
+  color: var(--bg-canvas);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  transition:
+    opacity var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+}
+
+.side-top {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+}
+.side-top.open {
+  transform: translate(-50%, 0);
+}
+
+.side-bottom {
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translate(-50%, -4px);
+}
+.side-bottom.open {
+  transform: translate(-50%, 0);
+}
+
+.side-left {
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translate(4px, -50%);
+}
+.side-left.open {
+  transform: translate(0, -50%);
+}
+
+.side-right {
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translate(-4px, -50%);
+}
+.side-right.open {
+  transform: translate(0, -50%);
+}
+
+.open {
+  opacity: 1;
+}

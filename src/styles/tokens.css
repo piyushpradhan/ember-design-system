@@ -1,0 +1,156 @@
+/* Design tokens — single source of truth. Mode-aware via [data-theme]. */
+
+:root,
+[data-theme='light'] {
+  /* Surfaces */
+  --bg-canvas: #faf9f6;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f3f1ec;
+  --bg-muted: #e8e5de;
+
+  /* Borders */
+  --border-subtle: #e8e5de;
+  --border-default: #d4cfc4;
+  --border-strong: #9c968a;
+
+  /* Text */
+  --text-primary: #161513;
+  --text-secondary: #5c5853;
+  --text-tertiary: #8b867d;
+  --text-disabled: #bab3a6;
+  --text-inverse: #faf9f6;
+
+  /* Accent — Ember */
+  --accent-ember-50: #fff4ec;
+  --accent-ember-100: #ffe3cc;
+  --accent-ember-500: #d9541a;
+  --accent-ember-600: #b8410d;
+  --accent-ember-700: #8f3309;
+
+  /* Semantic */
+  --status-success: #2f7d4f;
+  --status-warning: #b5811a;
+  --status-danger: #b53a2c;
+  --status-info: #2d6bae;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(20, 18, 14, 0.06);
+  --shadow-md: 0 6px 24px -4px rgba(20, 18, 14, 0.1);
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 2px var(--bg-canvas), 0 0 0 4px var(--accent-ember-500);
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg-canvas: #0f0f0e;
+  --bg-surface: #181816;
+  --bg-subtle: #1f1f1d;
+  --bg-muted: #2a2a27;
+
+  --border-subtle: #2a2a27;
+  --border-default: #3a3a36;
+  --border-strong: #5c5c57;
+
+  --text-primary: #f2efe8;
+  --text-secondary: #a8a39a;
+  --text-tertiary: #7a756d;
+  --text-disabled: #4a4742;
+  --text-inverse: #0f0f0e;
+
+  --accent-ember-50: #2a1810;
+  --accent-ember-100: #3d2418;
+  --accent-ember-500: #e86b2e;
+  --accent-ember-600: #f58247;
+  --accent-ember-700: #ff9663;
+
+  --status-success: #52c77e;
+  --status-warning: #e5b547;
+  --status-danger: #e56657;
+  --status-info: #5599dd;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
+
+  --focus-ring: 0 0 0 2px var(--bg-canvas), 0 0 0 4px var(--accent-ember-500);
+
+  color-scheme: dark;
+}
+
+:root {
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+  --space-10: 64px;
+  --space-12: 96px;
+  --space-16: 144px;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* Type scale (modular, base 16, ratio 1.250) */
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 30px;
+  --text-3xl: 38px;
+  --text-4xl: 48px;
+  --text-5xl: 60px;
+  --text-6xl: 76px;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.15;
+  --leading-base: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Font weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Font families */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Source Serif 4', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-display: 'Inter', var(--font-sans);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Layout */
+  --content-max: 680px;
+  --content-wide: 880px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

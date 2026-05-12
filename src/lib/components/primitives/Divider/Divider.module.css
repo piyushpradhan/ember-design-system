@@ -1,0 +1,47 @@
+.divider {
+  background: transparent;
+  border-color: var(--border-subtle);
+  border-style: solid;
+  border-width: 0;
+}
+
+.orient-horizontal {
+  width: 100%;
+  border-top-width: 1px;
+}
+
+.orient-vertical {
+  height: auto;
+  align-self: stretch;
+  border-left-width: 1px;
+}
+
+.variant-dashed.orient-horizontal { border-top-style: dashed; }
+.variant-dashed.orient-vertical { border-left-style: dashed; }
+
+.labelled {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.variant-dashed.line {
+  background: transparent;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.labelText {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

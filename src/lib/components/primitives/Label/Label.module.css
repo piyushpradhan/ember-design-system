@@ -1,0 +1,30 @@
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1.4;
+}
+
+.text { display: inline-flex; align-items: baseline; gap: 4px; }
+
+.required {
+  color: var(--status-danger);
+  font-weight: var(--font-medium);
+}
+
+.optional {
+  color: var(--text-tertiary);
+  font-weight: var(--font-regular);
+  font-size: var(--text-xs);
+}
+
+.hint {
+  color: var(--text-tertiary);
+  font-weight: var(--font-regular);
+  font-size: var(--text-xs);
+}

@@ -1,0 +1,109 @@
+.top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  height: 56px;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-canvas);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.01em;
+}
+
+.topItems {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-1);
+}
+
+.topItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--easing-standard), background var(--duration-fast) var(--easing-standard);
+}
+
+.topItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+  text-decoration: none;
+}
+
+.topItemActive {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.side {
+  width: 240px;
+  padding: var(--space-4);
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-canvas);
+}
+
+.sideTitle {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding: 0 var(--space-2) var(--space-3);
+}
+
+.sideItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sideItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.sideItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+  text-decoration: none;
+}
+
+.sideItemActive {
+  background: var(--accent-ember-50);
+  color: var(--accent-ember-700);
+}
+
+.sideIcon { color: currentColor; display: inline-flex; }

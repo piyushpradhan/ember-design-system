@@ -1,0 +1,43 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.size-sm { padding: 2px 8px; font-size: var(--text-2xs); height: 18px; }
+.size-md { padding: 3px 10px; font-size: var(--text-xs); height: 22px; }
+
+.icon { display: inline-flex; }
+
+/* subtle: tinted bg + colored text */
+.variant-subtle.tone-neutral { background: var(--bg-muted); color: var(--text-secondary); }
+.variant-subtle.tone-accent { background: var(--accent-ember-50); color: var(--accent-ember-700); }
+.variant-subtle.tone-success { background: color-mix(in srgb, var(--status-success) 14%, transparent); color: var(--status-success); }
+.variant-subtle.tone-warning { background: color-mix(in srgb, var(--status-warning) 14%, transparent); color: var(--status-warning); }
+.variant-subtle.tone-danger { background: color-mix(in srgb, var(--status-danger) 14%, transparent); color: var(--status-danger); }
+.variant-subtle.tone-info { background: color-mix(in srgb, var(--status-info) 14%, transparent); color: var(--status-info); }
+
+/* solid */
+.variant-solid { color: #ffffff; }
+.variant-solid.tone-neutral { background: var(--text-secondary); }
+.variant-solid.tone-accent { background: var(--accent-ember-500); }
+.variant-solid.tone-success { background: var(--status-success); }
+.variant-solid.tone-warning { background: var(--status-warning); }
+.variant-solid.tone-danger { background: var(--status-danger); }
+.variant-solid.tone-info { background: var(--status-info); }
+
+/* outline */
+.variant-outline { background: transparent; }
+.variant-outline.tone-neutral { border-color: var(--border-default); color: var(--text-secondary); }
+.variant-outline.tone-accent { border-color: var(--accent-ember-500); color: var(--accent-ember-500); }
+.variant-outline.tone-success { border-color: var(--status-success); color: var(--status-success); }
+.variant-outline.tone-warning { border-color: var(--status-warning); color: var(--status-warning); }
+.variant-outline.tone-danger { border-color: var(--status-danger); color: var(--status-danger); }
+.variant-outline.tone-info { border-color: var(--status-info); color: var(--status-info); }

@@ -1,0 +1,55 @@
+.wrap {
+  position: relative;
+  display: inline;
+}
+
+.marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--font-medium);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  margin: 0 1px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-ember-50);
+  color: var(--accent-ember-700);
+  cursor: pointer;
+  vertical-align: super;
+  border: 1px solid var(--accent-ember-100);
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.marker:hover {
+  background: var(--accent-ember-500);
+  color: #ffffff;
+  border-color: var(--accent-ember-500);
+}
+
+.marker:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.body {
+  display: block;
+  margin: var(--space-3) 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-subtle);
+  border-left: 3px solid var(--accent-ember-500);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.bodyNumber {
+  font-family: var(--font-mono);
+  font-weight: var(--font-medium);
+  color: var(--accent-ember-500);
+  margin-right: 6px;
+}
