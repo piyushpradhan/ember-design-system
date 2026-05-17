@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8,12 +9,14 @@
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
   transition:
-    background-color var(--duration-fast) var(--easing-standard),
-    border-color var(--duration-fast) var(--easing-standard),
-    color var(--duration-fast) var(--easing-standard),
-    box-shadow var(--duration-base) var(--easing-standard),
-    transform var(--duration-fast) var(--easing-standard);
+    background-color var(--duration-base) var(--easing-silk),
+    border-color var(--duration-base) var(--easing-silk),
+    color var(--duration-base) var(--easing-silk),
+    box-shadow var(--duration-slow) var(--easing-silk),
+    transform var(--duration-base) var(--easing-silk);
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
@@ -31,20 +34,58 @@
 }
 
 .button:active:not(:disabled) {
-  transform: translateY(1px) scale(0.985);
-  transition-duration: 60ms;
+  transform: translateY(0) scale(0.97);
+  transition-duration: var(--duration-xs);
+}
+
+/* Sheen overlay — sweeps across on hover for solid variants */
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-base) var(--easing-silk),
+    background-position var(--duration-xl) var(--easing-silk);
+  z-index: 1;
+}
+
+.variant-primary:hover:not(:disabled)::before,
+.variant-danger:hover:not(:disabled)::before {
+  opacity: 1;
+  background-position: 0 0;
+}
+
+.label,
+.icon {
+  position: relative;
+  z-index: 2;
 }
 
 .button .icon {
-  transition: transform var(--duration-base) var(--easing-spring);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--easing-silk);
 }
 
-.button:hover:not(:disabled) .icon:last-child {
-  transform: translateX(2px);
+.button:hover:not(:disabled) .icon:last-child:not(:first-child) {
+  transform: translateX(3px);
 }
 
 .button:hover:not(:disabled) .icon:first-child:not(:last-child) {
-  transform: translateX(-1px);
+  transform: translateX(-2px);
 }
 
 /* Sizes */
@@ -74,7 +115,9 @@
 
 .variant-primary:hover:not(:disabled) {
   background: var(--accent-ember-600);
-  box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--accent-ember-500) 40%, transparent);
+  box-shadow:
+    0 6px 18px -4px color-mix(in srgb, var(--accent-ember-500) 50%, transparent),
+    0 2px 4px -1px color-mix(in srgb, var(--accent-ember-500) 30%, transparent);
   transform: translateY(-1px);
 }
 
@@ -91,10 +134,13 @@
 .variant-secondary:hover:not(:disabled) {
   background: var(--bg-subtle);
   border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .variant-secondary:active:not(:disabled) {
   background: var(--bg-muted);
+  box-shadow: none;
 }
 
 .variant-ghost {
@@ -116,8 +162,10 @@
 }
 
 .variant-danger:hover:not(:disabled) {
-  filter: brightness(0.92);
-  box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--status-danger) 40%, transparent);
+  filter: brightness(0.94);
+  box-shadow:
+    0 6px 18px -4px color-mix(in srgb, var(--status-danger) 50%, transparent),
+    0 2px 4px -1px color-mix(in srgb, var(--status-danger) 30%, transparent);
   transform: translateY(-1px);
 }
 
@@ -126,12 +174,31 @@
   color: var(--accent-ember-500);
   padding: 0;
   height: auto;
+  overflow: visible;
+}
+
+.variant-link::before {
+  display: none;
+}
+
+.variant-link .label {
+  position: relative;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition:
+    background-size var(--duration-slow) var(--easing-silk),
+    color var(--duration-base) var(--easing-silk);
+  padding-bottom: 2px;
 }
 
 .variant-link:hover:not(:disabled) {
   color: var(--accent-ember-600);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+}
+
+.variant-link:hover:not(:disabled) .label {
+  background-size: 100% 1px;
 }
 
 /* Layout helpers */
@@ -144,14 +211,10 @@
   align-items: center;
 }
 
-.icon {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
 .spinner {
   animation: button-spin 0.8s linear infinite;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes button-spin {

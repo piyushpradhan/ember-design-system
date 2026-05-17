@@ -99,12 +99,14 @@ export function ComponentsPage() {
         <Demo label="Textarea, select">
           <div style={{ display: 'grid', gap: 12, width: 320 }}>
             <Textarea placeholder="Write a long description…" rows={3} />
-            <Select>
-              <option>Pick one…</option>
-              <option>Hobby</option>
-              <option>Pro</option>
-              <option>Team</option>
-            </Select>
+            <Select
+              placeholder="Pick a plan…"
+              options={[
+                { value: 'hobby', label: 'Hobby', description: 'For tinkerers' },
+                { value: 'pro', label: 'Pro', description: 'For builders' },
+                { value: 'team', label: 'Team', description: 'For squads' },
+              ]}
+            />
           </div>
         </Demo>
         <Demo label="Toggles">

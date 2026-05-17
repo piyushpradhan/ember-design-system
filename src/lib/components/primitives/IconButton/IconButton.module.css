@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6,21 +7,42 @@
   border: 1px solid transparent;
   cursor: pointer;
   flex-shrink: 0;
+  overflow: visible;
   transition:
-    background-color var(--duration-fast) var(--easing-standard),
-    border-color var(--duration-fast) var(--easing-standard),
-    color var(--duration-fast) var(--easing-standard),
-    transform var(--duration-base) var(--easing-spring);
+    background-color var(--duration-base) var(--easing-silk),
+    border-color var(--duration-base) var(--easing-silk),
+    color var(--duration-base) var(--easing-silk),
+    box-shadow var(--duration-slow) var(--easing-silk),
+    transform var(--duration-base) var(--easing-silk);
   color: var(--text-primary);
 }
 
-.button:hover:not(:disabled) {
-  transform: scale(1.06);
+.button > * {
+  transition: transform var(--duration-base) var(--easing-silk);
 }
 
-.button:active:not(:disabled) {
-  transform: scale(0.94);
-  transition-duration: 80ms;
+.button:hover:not(:disabled) > * {
+  transform: scale(1.08);
+}
+
+.button:active:not(:disabled) > * {
+  transform: scale(0.9);
+  transition-duration: var(--duration-xs);
+}
+
+/* Halo ring on hover */
+.button::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow var(--duration-slow) var(--easing-silk);
+}
+
+.button:hover:not(:disabled)::after {
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 10%, transparent);
 }
 
 .button:disabled {
@@ -41,7 +63,10 @@
   background: var(--accent-ember-500);
   color: #ffffff;
 }
-.variant-primary:hover:not(:disabled) { background: var(--accent-ember-600); }
+.variant-primary:hover:not(:disabled) {
+  background: var(--accent-ember-600);
+  box-shadow: 0 4px 14px -2px color-mix(in srgb, var(--accent-ember-500) 45%, transparent);
+}
 
 .variant-secondary {
   background: var(--bg-surface);
@@ -59,4 +84,7 @@
   background: var(--status-danger);
   color: #ffffff;
 }
-.variant-danger:hover:not(:disabled) { filter: brightness(0.92); }
+.variant-danger:hover:not(:disabled) {
+  filter: brightness(0.94);
+  box-shadow: 0 4px 14px -2px color-mix(in srgb, var(--status-danger) 45%, transparent);
+}

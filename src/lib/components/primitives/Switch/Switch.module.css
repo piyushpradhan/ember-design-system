@@ -18,14 +18,16 @@
   opacity: 0;
   margin: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .track {
   display: inline-block;
   background: var(--border-strong);
   border-radius: var(--radius-pill);
-  transition: background var(--duration-base) var(--easing-standard);
+  transition: background var(--duration-slow) var(--easing-silk);
   position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .thumb {
@@ -33,15 +35,15 @@
   top: 2px;
   left: 2px;
   background: #ffffff;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   transition:
-    transform var(--duration-base) var(--easing-spring),
-    width var(--duration-fast) var(--easing-standard);
-  box-shadow: var(--shadow-sm);
+    transform var(--duration-slow) var(--easing-silk),
+    width var(--duration-base) var(--easing-silk),
+    box-shadow var(--duration-base) var(--easing-silk);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.08);
 }
-
-.wrap:active .size-md .thumb { width: 22px; }
-.wrap:active .size-sm .thumb { width: 16px; }
 
 .size-md .track { width: 36px; height: 20px; }
 .size-md .thumb { width: 16px; height: 16px; }
@@ -51,12 +53,26 @@
 .size-sm .thumb { width: 12px; height: 12px; }
 .size-sm .input:checked ~ .track .thumb { transform: translateX(12px); }
 
+/* Active stretch */
+.wrap:active .size-md .thumb { width: 22px; }
+.wrap:active .size-md .input:checked ~ .track .thumb { transform: translateX(10px); }
+.wrap:active .size-sm .thumb { width: 16px; }
+.wrap:active .size-sm .input:checked ~ .track .thumb { transform: translateX(8px); }
+
+.wrap:hover .thumb {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
 .input:checked ~ .track {
   background: var(--accent-ember-500);
 }
 
 .input:focus-visible ~ .track {
-  box-shadow: var(--focus-ring);
+  box-shadow:
+    var(--focus-ring),
+    inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .input:disabled ~ .track {
@@ -70,6 +86,7 @@
   gap: 2px;
   font-size: var(--text-sm);
   line-height: 1.4;
+  transition: color var(--duration-base) var(--easing-silk);
 }
 
 .label { color: var(--text-primary); }

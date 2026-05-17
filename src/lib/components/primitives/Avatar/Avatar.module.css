@@ -12,7 +12,8 @@
   overflow: hidden;
   vertical-align: middle;
   transition:
-    transform var(--duration-base) var(--easing-spring),
+    transform var(--duration-slow) var(--easing-silk),
+    box-shadow var(--duration-slow) var(--easing-silk),
     z-index 0s;
 }
 
@@ -39,7 +40,26 @@
   border: 2px solid var(--bg-canvas);
 }
 
-.status-online { background: var(--status-success); }
+.status-online {
+  background: var(--status-success);
+}
+
+.status-online::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--status-success);
+  opacity: 0.6;
+  animation: avatar-pulse 2s var(--easing-silk) infinite;
+  pointer-events: none;
+}
+
+@keyframes avatar-pulse {
+  0% { transform: scale(0.6); opacity: 0.6; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
 .status-offline { background: var(--text-tertiary); }
 .status-away { background: var(--status-warning); }
 .status-busy { background: var(--status-danger); }

@@ -23,8 +23,10 @@
   white-space: nowrap;
   box-shadow: var(--shadow-md);
   transition:
-    opacity var(--duration-fast) var(--easing-standard),
-    transform var(--duration-fast) var(--easing-standard);
+    opacity var(--duration-base) var(--easing-silk),
+    transform var(--duration-slow) var(--easing-silk),
+    filter var(--duration-base) var(--easing-silk);
+  filter: blur(2px);
 }
 
 .side-top {
@@ -69,4 +71,5 @@
 
 .open {
   opacity: 1;
+  filter: blur(0);
 }
