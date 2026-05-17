@@ -1,3 +1,10 @@
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .input {
   width: 100%;
   background: var(--bg-surface);
@@ -8,6 +15,7 @@
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   line-height: 1.5;
+  height: 100%;
   transition:
     border-color var(--duration-base) var(--easing-silk),
     background-color var(--duration-base) var(--easing-silk),
@@ -56,37 +64,27 @@
 .size-md { height: 36px; font-size: var(--text-sm); }
 .size-lg { height: 44px; font-size: var(--text-base); }
 
-.wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.wrap .input {
-  height: 100%;
-}
-
-/* Animated underline that draws on focus */
+/* Edge-to-edge underline indicator on wrap */
 .wrap::after {
   content: '';
   position: absolute;
-  left: 50%;
-  right: 50%;
+  left: 0;
+  right: 0;
   bottom: -2px;
   height: 2px;
   border-radius: 2px;
   background: var(--accent-ember-500);
-  transition:
-    left var(--duration-slow) var(--easing-silk),
-    right var(--duration-slow) var(--easing-silk),
-    opacity var(--duration-base) var(--easing-silk);
+  transform: scaleX(0);
+  transform-origin: center;
   opacity: 0;
   pointer-events: none;
+  transition:
+    transform var(--duration-slow) var(--easing-silk),
+    opacity var(--duration-base) var(--easing-silk);
 }
 
 .wrap:focus-within::after {
-  left: 8%;
-  right: 8%;
+  transform: scaleX(1);
   opacity: 1;
 }
 
@@ -94,8 +92,16 @@
   background: var(--status-danger);
 }
 
-.hasIcon {
+.wrapDisabled::after {
+  display: none;
+}
+
+.hasLeading {
   padding-left: 36px;
+}
+
+.hasTrailing {
+  padding-right: 36px;
 }
 
 .icon {
@@ -119,8 +125,4 @@
 
 .wrap:focus-within .leading {
   transform: translateX(-1px);
-}
-
-.wrap:has(.trailing) .input {
-  padding-right: 36px;
 }
