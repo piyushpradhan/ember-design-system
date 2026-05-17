@@ -41,6 +41,14 @@
   right: 10px;
   color: var(--text-tertiary);
   pointer-events: none;
+  transition:
+    color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-base) var(--easing-spring);
+}
+
+.wrap:focus-within .chevron {
+  color: var(--accent-ember-500);
+  transform: translateY(1px);
 }
 
 .size-sm .select { height: 28px; font-size: var(--text-sm); }

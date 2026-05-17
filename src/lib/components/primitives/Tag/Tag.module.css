@@ -21,6 +21,11 @@
   background: var(--bg-muted);
   border-color: var(--border-default);
   color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.interactive:active {
+  transform: translateY(0);
 }
 
 .label { line-height: 1.4; }
@@ -35,11 +40,16 @@
   color: var(--text-tertiary);
   margin-right: -4px;
   cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-base) var(--easing-spring);
 }
 
 .remove:hover {
   background: var(--bg-muted);
   color: var(--text-primary);
+  transform: rotate(90deg);
 }
 
 .remove:focus-visible {

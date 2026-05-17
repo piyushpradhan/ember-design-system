@@ -11,6 +11,9 @@
   flex-shrink: 0;
   overflow: hidden;
   vertical-align: middle;
+  transition:
+    transform var(--duration-base) var(--easing-spring),
+    z-index 0s;
 }
 
 .shape-circle { border-radius: 50%; }
@@ -42,8 +45,16 @@
 .status-busy { background: var(--status-danger); }
 
 .group { display: inline-flex; }
-.group > * { margin-left: -8px; }
+.group > * { margin-left: -8px; position: relative; }
 .group > *:first-child { margin-left: 0; }
+
+.group:hover > .avatar { transform: translateX(-2px); }
+.group:hover > .avatar:hover {
+  transform: translateY(-3px) scale(1.08);
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+.group:hover > .avatar:hover ~ .avatar { transform: translateX(2px); }
 
 .overflow {
   background: var(--bg-muted);

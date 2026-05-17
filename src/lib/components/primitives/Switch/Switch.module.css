@@ -34,9 +34,14 @@
   left: 2px;
   background: #ffffff;
   border-radius: 50%;
-  transition: transform var(--duration-base) var(--easing-standard);
+  transition:
+    transform var(--duration-base) var(--easing-spring),
+    width var(--duration-fast) var(--easing-standard);
   box-shadow: var(--shadow-sm);
 }
+
+.wrap:active .size-md .thumb { width: 22px; }
+.wrap:active .size-sm .thumb { width: 16px; }
 
 .size-md .track { width: 36px; height: 20px; }
 .size-md .thumb { width: 16px; height: 16px; }

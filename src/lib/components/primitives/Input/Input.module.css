@@ -67,6 +67,11 @@
   align-items: center;
   color: var(--text-tertiary);
   pointer-events: none;
+  transition: color var(--duration-fast) var(--easing-standard);
+}
+
+.wrap:focus-within .icon {
+  color: var(--accent-ember-500);
 }
 
 .leading { left: 10px; }

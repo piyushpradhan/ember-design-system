@@ -42,8 +42,13 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: transparent;
-  transition: background var(--duration-fast) var(--easing-standard);
+  background: var(--accent-ember-500);
+  transform: scale(0);
+  transition: transform var(--duration-base) var(--easing-spring);
+}
+
+.wrap:active .input:not(:disabled) + .dot {
+  transform: scale(0.9);
 }
 
 .input:hover + .dot:not([disabled]) {
@@ -59,7 +64,7 @@
 }
 
 .input:checked + .dot::after {
-  background: var(--accent-ember-500);
+  transform: scale(1);
 }
 
 .input:disabled + .dot {

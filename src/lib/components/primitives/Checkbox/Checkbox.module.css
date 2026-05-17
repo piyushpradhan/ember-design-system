@@ -36,6 +36,20 @@
   transition: all var(--duration-fast) var(--easing-standard);
 }
 
+.box > svg {
+  transform: scale(0);
+  transition: transform var(--duration-base) var(--easing-spring);
+}
+
+.input:checked + .box > svg,
+.input[aria-checked='mixed'] + .box > svg {
+  transform: scale(1);
+}
+
+.wrap:active .input:not(:disabled) + .box {
+  transform: scale(0.9);
+}
+
 .input:hover + .box:not([disabled]) { border-color: var(--accent-ember-500); }
 
 .input:focus-visible + .box {

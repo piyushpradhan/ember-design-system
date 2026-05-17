@@ -12,6 +12,7 @@
     background-color var(--duration-fast) var(--easing-standard),
     border-color var(--duration-fast) var(--easing-standard),
     color var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-base) var(--easing-standard),
     transform var(--duration-fast) var(--easing-standard);
   white-space: nowrap;
   user-select: none;
@@ -30,7 +31,20 @@
 }
 
 .button:active:not(:disabled) {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.985);
+  transition-duration: 60ms;
+}
+
+.button .icon {
+  transition: transform var(--duration-base) var(--easing-spring);
+}
+
+.button:hover:not(:disabled) .icon:last-child {
+  transform: translateX(2px);
+}
+
+.button:hover:not(:disabled) .icon:first-child:not(:last-child) {
+  transform: translateX(-1px);
 }
 
 /* Sizes */
@@ -60,6 +74,8 @@
 
 .variant-primary:hover:not(:disabled) {
   background: var(--accent-ember-600);
+  box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--accent-ember-500) 40%, transparent);
+  transform: translateY(-1px);
 }
 
 .variant-primary:active:not(:disabled) {
@@ -101,6 +117,8 @@
 
 .variant-danger:hover:not(:disabled) {
   filter: brightness(0.92);
+  box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--status-danger) 40%, transparent);
+  transform: translateY(-1px);
 }
 
 .variant-link {
