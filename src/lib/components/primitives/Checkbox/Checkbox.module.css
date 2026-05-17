@@ -21,9 +21,11 @@
   opacity: 0;
   margin: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .box {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -33,10 +35,34 @@
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
   color: transparent;
-  transition: all var(--duration-fast) var(--easing-standard);
+  transition:
+    background-color var(--duration-base) var(--easing-silk),
+    border-color var(--duration-base) var(--easing-silk),
+    color var(--duration-base) var(--easing-silk),
+    transform var(--duration-base) var(--easing-silk),
+    box-shadow var(--duration-base) var(--easing-silk);
 }
 
-.input:hover + .box:not([disabled]) { border-color: var(--accent-ember-500); }
+.box > svg {
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity var(--duration-base) var(--easing-silk),
+    transform var(--duration-slow) var(--easing-spring);
+}
+
+.box > svg path,
+.box > svg polyline,
+.box > svg line {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset var(--duration-slow) var(--easing-silk) 60ms;
+}
+
+.input:hover + .box:not([disabled]) {
+  border-color: var(--accent-ember-500);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-ember-500) 10%, transparent);
+}
 
 .input:focus-visible + .box {
   box-shadow: var(--focus-ring);
@@ -47,6 +73,23 @@
   background: var(--accent-ember-500);
   border-color: var(--accent-ember-500);
   color: #ffffff;
+}
+
+.input:checked + .box > svg,
+.input[aria-checked='mixed'] + .box > svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.input:checked + .box > svg path,
+.input:checked + .box > svg polyline,
+.input:checked + .box > svg line,
+.input[aria-checked='mixed'] + .box > svg line {
+  stroke-dashoffset: 0;
+}
+
+.wrap:active .input:not(:disabled) + .box {
+  transform: scale(0.88);
 }
 
 .input:disabled + .box {
@@ -75,9 +118,14 @@
 
 .label {
   color: var(--text-primary);
+  transition: color var(--duration-base) var(--easing-silk);
 }
 
 .description {
   color: var(--text-secondary);
   font-size: var(--text-xs);
+}
+
+.wrap:hover .label {
+  color: var(--accent-ember-700);
 }

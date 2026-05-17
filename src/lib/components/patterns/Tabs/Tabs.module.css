@@ -5,6 +5,7 @@
 }
 
 .list {
+  position: relative;
   display: inline-flex;
   gap: var(--space-1);
   border-bottom: 1px solid var(--border-subtle);
@@ -15,32 +16,95 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 36px;
   padding: 0 var(--space-3);
+  background: transparent;
+  border: 0;
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   color: var(--text-secondary);
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color var(--duration-fast) var(--easing-standard);
   margin-bottom: -1px;
+  transition:
+    color var(--duration-base) var(--easing-silk),
+    background-color var(--duration-base) var(--easing-silk);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
-.trigger:hover { color: var(--text-primary); }
+.trigger:hover {
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--bg-subtle) 60%, transparent);
+}
+
 .trigger:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
   border-radius: var(--radius-sm);
 }
 
+.trigger:active {
+  background: var(--bg-subtle);
+}
+
+.triggerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: transform var(--duration-base) var(--easing-silk);
+}
+
+.trigger:active .triggerLabel {
+  transform: scale(0.97);
+}
+
 .active {
-  color: var(--text-primary);
-  border-bottom-color: var(--accent-ember-500);
+  color: var(--accent-ember-700);
+}
+
+[data-theme='dark'] .active {
+  color: var(--accent-ember-500);
+}
+
+/* Sliding indicator */
+.indicator {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent-ember-500);
+  border-radius: 2px 2px 0 0;
+  pointer-events: none;
+  transform-origin: left center;
+  opacity: 0;
+  transition:
+    opacity var(--duration-base) var(--easing-silk);
+}
+
+.indicatorReady {
+  opacity: 1;
+  transition:
+    transform var(--duration-slow) var(--easing-silk),
+    width var(--duration-slow) var(--easing-silk),
+    opacity var(--duration-base) var(--easing-silk);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-ember-500) 40%, transparent);
 }
 
 .content {
   outline: none;
   font-size: var(--text-sm);
   color: var(--text-primary);
+  animation: tabs-content-in var(--duration-slow) var(--easing-silk);
+}
+
+@keyframes tabs-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

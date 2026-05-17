@@ -1,4 +1,15 @@
-import { createContext, useContext, useId, useState, type HTMLAttributes, type ReactNode } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react'
 import { cn } from '../../../utils/cn'
 import styles from './Tabs.module.css'
 
@@ -6,6 +17,7 @@ interface TabsContextValue {
   value: string
   setValue: (v: string) => void
   baseId: string
+  registerTrigger: (value: string, el: HTMLButtonElement | null) => void
 }
 
 const TabsContext = createContext<TabsContextValue | null>(null)
@@ -27,21 +39,85 @@ export function Tabs({ defaultValue, value, onValueChange, className, children, 
   const [internal, setInternal] = useState(defaultValue)
   const baseId = useId()
   const active = value ?? internal
-  const set = (v: string) => {
-    if (value === undefined) setInternal(v)
-    onValueChange?.(v)
-  }
+  const triggerRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
+
+  const set = useCallback(
+    (v: string) => {
+      if (value === undefined) setInternal(v)
+      onValueChange?.(v)
+    },
+    [value, onValueChange]
+  )
+
+  const registerTrigger = useCallback((v: string, el: HTMLButtonElement | null) => {
+    if (el) triggerRefs.current.set(v, el)
+    else triggerRefs.current.delete(v)
+  }, [])
+
   return (
-    <TabsContext.Provider value={{ value: active, setValue: set, baseId }}>
-      <div className={cn(styles.root, className)} {...rest}>{children}</div>
+    <TabsContext.Provider value={{ value: active, setValue: set, baseId, registerTrigger }}>
+      <TabsRefContext.Provider value={triggerRefs}>
+        <div className={cn(styles.root, className)} {...rest}>
+          {children}
+        </div>
+      </TabsRefContext.Provider>
     </TabsContext.Provider>
   )
 }
 
+const TabsRefContext = createContext<React.MutableRefObject<Map<string, HTMLButtonElement>> | null>(null)
+
 export function TabsList({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+  const { value } = useTabs()
+  const triggerRefs = useContext(TabsRefContext)
+  const listRef = useRef<HTMLDivElement | null>(null)
+  const [indicator, setIndicator] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  })
+
+  const measure = useCallback(() => {
+    const list = listRef.current
+    const el = triggerRefs?.current.get(value)
+    if (!list || !el) return
+    const listRect = list.getBoundingClientRect()
+    const elRect = el.getBoundingClientRect()
+    setIndicator({ left: elRect.left - listRect.left, width: elRect.width, ready: true })
+  }, [value, triggerRefs])
+
+  useLayoutEffect(() => {
+    measure()
+  }, [measure])
+
+  useEffect(() => {
+    const handle = () => measure()
+    window.addEventListener('resize', handle)
+    const ro = new ResizeObserver(handle)
+    if (listRef.current) ro.observe(listRef.current)
+    triggerRefs?.current.forEach((el) => ro.observe(el))
+    return () => {
+      window.removeEventListener('resize', handle)
+      ro.disconnect()
+    }
+  }, [measure, triggerRefs])
+
   return (
-    <div role="tablist" className={cn(styles.list, className)} {...rest}>
+    <div
+      ref={listRef}
+      role="tablist"
+      className={cn(styles.list, className)}
+      {...rest}
+    >
       {children}
+      <span
+        aria-hidden
+        className={cn(styles.indicator, indicator.ready && styles.indicatorReady)}
+        style={{
+          transform: `translateX(${indicator.left}px)`,
+          width: `${indicator.width}px`,
+        }}
+      />
     </div>
   )
 }
@@ -51,10 +127,18 @@ export interface TabsTriggerProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export function TabsTrigger({ value, className, children, ...rest }: TabsTriggerProps) {
-  const { value: active, setValue, baseId } = useTabs()
+  const { value: active, setValue, baseId, registerTrigger } = useTabs()
   const selected = active === value
+  const ref = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    registerTrigger(value, ref.current)
+    return () => registerTrigger(value, null)
+  }, [value, registerTrigger])
+
   return (
     <button
+      ref={ref}
       role="tab"
       type="button"
       id={`${baseId}-tab-${value}`}
@@ -65,7 +149,7 @@ export function TabsTrigger({ value, className, children, ...rest }: TabsTrigger
       className={cn(styles.trigger, selected && styles.active, className)}
       {...rest}
     >
-      {children}
+      <span className={styles.triggerLabel}>{children}</span>
     </button>
   )
 }

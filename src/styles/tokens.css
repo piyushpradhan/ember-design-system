@@ -138,6 +138,12 @@
   --easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --easing-spring: cubic-bezier(0.34, 1.4, 0.55, 1);
+  --easing-silk: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Motion durations (added) */
+  --duration-xs: 80ms;
+  --duration-xl: 480ms;
 
   /* Layout */
   --content-max: 680px;

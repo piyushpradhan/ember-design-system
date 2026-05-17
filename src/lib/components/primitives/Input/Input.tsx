@@ -15,26 +15,30 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { inputSize = 'md', invalid, leadingIcon, trailingIcon, className, disabled, ...rest },
   ref
 ) {
-  const inner = (
-    <input
-      ref={ref}
-      disabled={disabled}
-      aria-invalid={invalid || undefined}
+  return (
+    <div
       className={cn(
-        styles.input,
+        styles.wrap,
         styles[`size-${inputSize}`],
         invalid && styles.invalid,
-        (leadingIcon || trailingIcon) && styles.hasIcon,
-        className
+        disabled && styles.wrapDisabled
       )}
-      {...rest}
-    />
-  )
-  if (!leadingIcon && !trailingIcon) return inner
-  return (
-    <div className={cn(styles.wrap, styles[`size-${inputSize}`], invalid && styles.invalid)}>
+    >
       {leadingIcon && <span className={cn(styles.icon, styles.leading)}>{leadingIcon}</span>}
-      {inner}
+      <input
+        ref={ref}
+        disabled={disabled}
+        aria-invalid={invalid || undefined}
+        className={cn(
+          styles.input,
+          styles[`size-${inputSize}`],
+          invalid && styles.invalid,
+          leadingIcon && styles.hasLeading,
+          trailingIcon && styles.hasTrailing,
+          className
+        )}
+        {...rest}
+      />
       {trailingIcon && <span className={cn(styles.icon, styles.trailing)}>{trailingIcon}</span>}
     </div>
   )
