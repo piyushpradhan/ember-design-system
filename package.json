@@ -1,23 +1,44 @@
 {
   "name": "ember-design-system",
-  "private": true,
-  "version": "0.1.0",
+  "private": false,
+  "version": "0.2.0",
   "type": "module",
   "description": "A tight, opinionated design system — warm neutrals, ember accent, dual-mode.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/src/lib/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/lib/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/ember-design-system.css",
+    "./tokens.css": "./src/styles/tokens.css"
+  },
+  "files": [
+    "dist",
+    "src/styles/tokens.css"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
+    "build:app": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "lucide-react": "^0.469.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "react-router-dom": "^7.1.1"
+    "lucide-react": "^0.469.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -33,9 +54,13 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.1.1",
     "storybook": "^10.3.6",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "vite-plugin-dts": "^4.5.4"
   }
 }
