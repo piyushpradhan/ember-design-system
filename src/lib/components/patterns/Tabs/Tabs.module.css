@@ -24,6 +24,7 @@
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
+  line-height: 1;
   color: var(--text-secondary);
   cursor: pointer;
   margin-bottom: -1px;
