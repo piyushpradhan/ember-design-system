@@ -6,6 +6,13 @@
   gap: var(--space-2);
   font-family: var(--font-sans);
   font-weight: var(--font-medium);
+  /* Tight line-height collapses the line-box to the font size so the
+   * glyph midline sits on the button's vertical centre. Without this
+   * the inherited `normal` (~1.2) line-height pads the descender area
+   * and the label visually drifts upward inside a fixed-height box —
+   * especially noticeable with display fonts like Geist whose
+   * ascender/descender split differs from Inter. */
+  line-height: 1;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
@@ -209,6 +216,7 @@
 .label {
   display: inline-flex;
   align-items: center;
+  line-height: 1;
 }
 
 .spinner {

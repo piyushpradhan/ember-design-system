@@ -1,7 +1,7 @@
 {
   "name": "ember-design-system",
   "private": false,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "A tight, opinionated design system — warm neutrals, ember accent, dual-mode.",
   "main": "./dist/index.js",
