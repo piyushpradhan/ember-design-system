@@ -19,7 +19,6 @@
   padding: 0 var(--space-3);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  line-height: 1;
   cursor: pointer;
   text-align: left;
   transition:
@@ -55,9 +54,9 @@
   cursor: not-allowed;
 }
 
-.size-sm .trigger { height: 28px; font-size: var(--text-sm); }
-.size-md .trigger { height: 36px; font-size: var(--text-sm); }
-.size-lg .trigger { height: 44px; font-size: var(--text-base); }
+.size-sm .trigger { height: 28px; line-height: 28px; font-size: var(--text-sm); }
+.size-md .trigger { height: 36px; line-height: 36px; font-size: var(--text-sm); }
+.size-lg .trigger { height: 44px; line-height: 44px; font-size: var(--text-base); }
 
 .value {
   display: inline-flex;
