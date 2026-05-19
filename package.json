@@ -25,7 +25,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:app": "tsc -b && vite build",
+    "build:app": "tsc -b && vite build --config vite.config.app.ts",
+    "build:vercel": "npm run build:app && storybook build --output-dir dist-app/storybook",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
