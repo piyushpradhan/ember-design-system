@@ -24,7 +24,10 @@
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
-  line-height: 1;
+  /* Line-height equal to container height collapses to a strut that
+   * spans the full row, so the text glyph centres naturally without
+   * leaning on the font's typo-ascender ratio. */
+  line-height: 36px;
   color: var(--text-secondary);
   cursor: pointer;
   margin-bottom: -1px;

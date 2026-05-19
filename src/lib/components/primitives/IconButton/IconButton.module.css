@@ -3,9 +3,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Match Button: collapse line-box to the icon glyph so the icon
-   * sits on the geometric centre regardless of the inherited
-   * font's line-height. */
+  /* Tight line-height keeps the icon glyph rendered at its natural
+   * height inside a fixed-square button regardless of which font the
+   * host app injects via --font-sans. */
   line-height: 1;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;

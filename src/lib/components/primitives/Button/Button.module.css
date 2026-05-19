@@ -6,13 +6,13 @@
   gap: var(--space-2);
   font-family: var(--font-sans);
   font-weight: var(--font-medium);
-  /* Tight line-height collapses the line-box to the font size so the
-   * glyph midline sits on the button's vertical centre. Without this
-   * the inherited `normal` (~1.2) line-height pads the descender area
-   * and the label visually drifts upward inside a fixed-height box —
-   * especially noticeable with display fonts like Geist whose
-   * ascender/descender split differs from Inter. */
-  line-height: 1;
+  /* Line-height per size variant matches the button height so the text
+   * line-box spans the full container and the glyph centres on the
+   * geometric midline regardless of the font's ascender/descender
+   * ratio. Fonts like Geist (typo ascent/descent ~5:1) drift upward
+   * when line-height collapses to the font-size; pinning line-height
+   * to the container height removes that drift without depending on
+   * the modern `text-box-trim` CSS property. */
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
@@ -83,6 +83,10 @@
 .button .icon {
   display: inline-flex;
   align-items: center;
+  /* Icons would otherwise inherit the size-variant's line-height (which
+   * matches the button height) and stretch their line-box vertically.
+   * A tight 1 keeps the SVG / glyph rendered at its natural size. */
+  line-height: 1;
   flex-shrink: 0;
   transition: transform var(--duration-base) var(--easing-silk);
 }
@@ -100,18 +104,21 @@
   height: 28px;
   padding: 0 12px;
   font-size: var(--text-sm);
+  line-height: 28px;
 }
 
 .size-md {
   height: 36px;
   padding: 0 16px;
   font-size: var(--text-sm);
+  line-height: 36px;
 }
 
 .size-lg {
   height: 44px;
   padding: 0 20px;
   font-size: var(--text-base);
+  line-height: 44px;
 }
 
 /* Variants */
@@ -181,6 +188,9 @@
   color: var(--accent-ember-500);
   padding: 0;
   height: auto;
+  /* Link variant flows inline with prose, so reset the size-variant's
+   * fixed line-height back to a readable body value. */
+  line-height: 1.5;
   overflow: visible;
 }
 
@@ -216,7 +226,6 @@
 .label {
   display: inline-flex;
   align-items: center;
-  line-height: 1;
 }
 
 .spinner {
