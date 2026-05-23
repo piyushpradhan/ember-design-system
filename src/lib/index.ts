@@ -14,6 +14,7 @@ export * from './components/primitives/Avatar'
 export * from './components/primitives/Divider'
 export * from './components/primitives/Tooltip'
 export * from './components/primitives/Spinner'
+export * from './components/primitives/Kbd'
 
 // Patterns
 export * from './components/patterns/Card'
