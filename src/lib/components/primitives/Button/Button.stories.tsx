@@ -55,6 +55,10 @@ export const Variants: Story = {
   ),
 }
 
+export const WithTooltip: Story = {
+  args: { tooltip: 'Save your changes', tooltipSide: 'top', children: 'Save' },
+}
+
 export const FullWidth: Story = {
   args: { fullWidth: true, leadingIcon: <Download size={14} />, children: 'Download archive' },
   decorators: [(S) => <div style={{ width: 320 }}><S /></div>],
