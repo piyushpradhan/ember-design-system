@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Badge } from '../lib/components/primitives/Badge'
 import { Button } from '../lib/components/primitives/Button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../lib/components/patterns/Card'
+import { resolveEnvUrl } from '../lib/utils/url'
 import styles from './HomePage.module.css'
 
 const principles = [
@@ -35,7 +36,7 @@ export function HomePage() {
             size="lg"
             variant="secondary"
             leadingIcon={<BookOpen size={16} />}
-            onClick={() => window.open(import.meta.env.VITE_STORYBOOK_URL || '/storybook/', '_blank', 'noopener')}
+            onClick={() => window.open(resolveEnvUrl(import.meta.env.VITE_STORYBOOK_URL, '/storybook/'), '_blank', 'noopener')}
           >
             Open Storybook
           </Button>
