@@ -13,6 +13,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const WithTooltip: Story = {
+  args: { tooltip: 'Settings', tooltipSide: 'top' },
+}
+
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12 }}>

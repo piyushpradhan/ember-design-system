@@ -1,6 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { Loader2 } from 'lucide-react'
 import { cn } from '../../../utils/cn'
+import { Tooltip, type TooltipSide } from '../Tooltip'
 import styles from './Button.module.css'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'link'
@@ -13,6 +14,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leadingIcon?: ReactNode
   trailingIcon?: ReactNode
   fullWidth?: boolean
+  tooltip?: ReactNode
+  tooltipSide?: TooltipSide
+  tooltipDelay?: number
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
@@ -27,11 +31,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     className,
     children,
     type = 'button',
+    tooltip,
+    tooltipSide,
+    tooltipDelay,
     ...rest
   },
   ref
 ) {
-  return (
+  const button = (
     <button
       ref={ref}
       type={type}
@@ -55,4 +62,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {trailingIcon && !loading && <span className={styles.icon}>{trailingIcon}</span>}
     </button>
   )
+
+  if (tooltip) {
+    return (
+      <Tooltip content={tooltip} side={tooltipSide} delay={tooltipDelay}>
+        {button}
+      </Tooltip>
+    )
+  }
+
+  return button
 })
