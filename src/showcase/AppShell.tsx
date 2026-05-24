@@ -4,6 +4,7 @@ import { Github, Moon, Sun, BookOpen } from 'lucide-react'
 import { useTheme } from '../lib/hooks/useTheme'
 import { IconButton } from '../lib/components/primitives/IconButton'
 import { Button } from '../lib/components/primitives/Button'
+import { resolveEnvUrl } from '../lib/utils/url'
 import styles from './AppShell.module.css'
 
 const navItems = [
@@ -42,7 +43,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               variant="ghost"
               size="sm"
               leadingIcon={<BookOpen size={14} />}
-              onClick={() => window.open(import.meta.env.VITE_STORYBOOK_URL || '/storybook/', '_blank', 'noopener')}
+              onClick={() => window.open(resolveEnvUrl(import.meta.env.VITE_STORYBOOK_URL, '/storybook/'), '_blank', 'noopener')}
             >
               Storybook
             </Button>
@@ -51,7 +52,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               variant="ghost"
               size="sm"
               icon={<Github size={16} />}
-              onClick={() => window.open(import.meta.env.VITE_REPO_URL || 'https://github.com/piyushpradhan/ember-design-system', '_blank', 'noopener')}
+              onClick={() => window.open(resolveEnvUrl(import.meta.env.VITE_REPO_URL, 'https://github.com/piyushpradhan/ember-design-system'), '_blank', 'noopener')}
             />
             <IconButton
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}

@@ -1,6 +1,7 @@
 import { ExternalLink, Github } from 'lucide-react'
 import { Button } from '../lib/components/primitives/Button'
 import { Badge } from '../lib/components/primitives/Badge'
+import { resolveEnvUrl } from '../lib/utils/url'
 import styles from './AboutPage.module.css'
 
 export function AboutPage() {
@@ -48,7 +49,7 @@ export function AboutPage() {
           <Button
             size="lg"
             leadingIcon={<Github size={16} />}
-            onClick={() => window.open(import.meta.env.VITE_REPO_URL || 'https://github.com/piyushpradhan/ember-design-system', '_blank', 'noopener')}
+            onClick={() => window.open(resolveEnvUrl(import.meta.env.VITE_REPO_URL, 'https://github.com/piyushpradhan/ember-design-system'), '_blank', 'noopener')}
           >
             View on GitHub
           </Button>
@@ -56,7 +57,7 @@ export function AboutPage() {
             variant="secondary"
             size="lg"
             trailingIcon={<ExternalLink size={16} />}
-            onClick={() => window.open(import.meta.env.VITE_STORYBOOK_URL || '/storybook/', '_blank', 'noopener')}
+            onClick={() => window.open(resolveEnvUrl(import.meta.env.VITE_STORYBOOK_URL, '/storybook/'), '_blank', 'noopener')}
           >
             Open Storybook
           </Button>
