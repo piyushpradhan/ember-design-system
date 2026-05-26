@@ -1,0 +1,15 @@
+.mark {
+  border-radius: 3px;
+  padding: 1px 3px;
+  background: transparent;
+}
+
+.tone-accent {
+  background: var(--accent-ember-50);
+  color: var(--accent-ember-700);
+}
+
+.tone-warning {
+  background: color-mix(in oklab, var(--status-warning) 18%, transparent);
+  color: var(--text-primary);
+}

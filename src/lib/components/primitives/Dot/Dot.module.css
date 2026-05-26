@@ -1,0 +1,59 @@
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  background: var(--dot-bg);
+}
+
+.size-xs {
+  width: 5px;
+  height: 5px;
+}
+.size-sm {
+  width: 6px;
+  height: 6px;
+}
+.size-md {
+  width: 8px;
+  height: 8px;
+}
+
+.tone-neutral {
+  --dot-bg: var(--text-tertiary);
+}
+.tone-accent {
+  --dot-bg: var(--accent-ember-500);
+}
+.tone-success {
+  --dot-bg: var(--status-success);
+}
+.tone-warning {
+  --dot-bg: var(--status-warning);
+}
+.tone-danger {
+  --dot-bg: var(--status-danger);
+}
+.tone-info {
+  --dot-bg: var(--status-info);
+}
+.custom {
+  --dot-bg: var(--dot-color);
+}
+
+.ring {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--dot-bg) 18%, transparent);
+}
+
+.pulse {
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
