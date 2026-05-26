@@ -2,19 +2,22 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
 import { cn } from '../../../utils/cn'
 import styles from './Kbd.module.css'
 
+export type KbdTone = 'default' | 'accent'
+
 export interface KbdProps extends HTMLAttributes<HTMLElement> {
   size?: 'sm' | 'md'
+  tone?: KbdTone
   icon?: ReactNode
 }
 
 export const Kbd = forwardRef<HTMLElement, KbdProps>(function Kbd(
-  { size = 'md', icon, className, children, ...rest },
+  { size = 'md', tone = 'default', icon, className, children, ...rest },
   ref
 ) {
   return (
     <kbd
       ref={ref}
-      className={cn(styles.kbd, styles[`size-${size}`], className)}
+      className={cn(styles.kbd, styles[`size-${size}`], tone !== 'default' && styles[`tone-${tone}`], className)}
       {...rest}
     >
       {icon && <span className={styles.icon}>{icon}</span>}

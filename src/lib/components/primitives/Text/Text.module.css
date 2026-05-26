@@ -1,0 +1,178 @@
+.text {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+}
+
+.size-2xs {
+  font-size: var(--text-2xs);
+}
+.size-xs {
+  font-size: var(--text-xs);
+}
+.size-sm {
+  font-size: var(--text-sm);
+}
+.size-base {
+  font-size: var(--text-base);
+}
+.size-md {
+  font-size: var(--text-md);
+}
+.size-lg {
+  font-size: var(--text-lg);
+}
+.size-xl {
+  font-size: var(--text-xl);
+}
+.size-2xl {
+  font-size: var(--text-2xl);
+}
+.size-3xl {
+  font-size: var(--text-3xl);
+}
+.sizeCustom {
+  font-size: var(--text-fs);
+}
+
+.weight-regular {
+  font-weight: var(--font-regular);
+}
+.weight-medium {
+  font-weight: var(--font-medium);
+}
+.weight-semibold {
+  font-weight: var(--font-semibold);
+}
+.weight-bold {
+  font-weight: var(--font-bold);
+}
+
+.tone-primary {
+  color: var(--text-primary);
+}
+.tone-secondary {
+  color: var(--text-secondary);
+}
+.tone-tertiary {
+  color: var(--text-tertiary);
+}
+.tone-inverse {
+  color: var(--text-inverse);
+}
+.tone-accent {
+  color: var(--accent-ember-500);
+}
+.tone-accent-ink {
+  color: var(--accent-ember-700);
+}
+.tone-danger {
+  color: var(--status-danger);
+}
+.tone-success {
+  color: var(--status-success);
+}
+.tone-warning {
+  color: var(--status-warning);
+}
+
+.family-sans {
+  font-family: var(--font-sans);
+}
+.family-mono {
+  font-family: var(--font-mono);
+}
+.family-serif {
+  font-family: var(--font-serif);
+}
+
+.leading-tight {
+  line-height: var(--leading-tight);
+}
+.leading-snug {
+  line-height: var(--leading-snug);
+}
+.leading-base {
+  line-height: var(--leading-base);
+}
+.leading-relaxed {
+  line-height: var(--leading-relaxed);
+}
+.leadingCustom {
+  line-height: var(--text-lh);
+}
+
+.tracking-tighter {
+  letter-spacing: -0.03em;
+}
+.tracking-tight {
+  letter-spacing: -0.01em;
+}
+.tracking-normal {
+  letter-spacing: 0;
+}
+.tracking-wide {
+  letter-spacing: 0.04em;
+}
+.tracking-wider {
+  letter-spacing: 0.08em;
+}
+.tracking-widest {
+  letter-spacing: 0.14em;
+}
+
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+
+.transform-uppercase {
+  text-transform: uppercase;
+}
+.transform-lowercase {
+  text-transform: lowercase;
+}
+.transform-capitalize {
+  text-transform: capitalize;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.ws-normal {
+  white-space: normal;
+}
+.ws-nowrap {
+  white-space: nowrap;
+}
+.ws-pre {
+  white-space: pre;
+}
+.ws-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.shrink {
+  flex-shrink: 0;
+}
