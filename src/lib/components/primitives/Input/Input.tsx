@@ -7,12 +7,13 @@ export type InputSize = 'sm' | 'md' | 'lg'
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   inputSize?: InputSize
   invalid?: boolean
+  disableFocus?: boolean
   leadingIcon?: ReactNode
   trailingIcon?: ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { inputSize = 'md', invalid, leadingIcon, trailingIcon, className, disabled, ...rest },
+  { inputSize = 'md', invalid, disableFocus, leadingIcon, trailingIcon, className, disabled, ...rest },
   ref
 ) {
   return (
@@ -21,7 +22,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         styles.wrap,
         styles[`size-${inputSize}`],
         invalid && styles.invalid,
-        disabled && styles.wrapDisabled
+        disabled && styles.wrapDisabled,
+        disableFocus && styles.noFocus
       )}
     >
       {leadingIcon && <span className={cn(styles.icon, styles.leading)}>{leadingIcon}</span>}

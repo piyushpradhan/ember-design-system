@@ -37,7 +37,7 @@
 
 .input:focus-visible {
   outline: none;
-  border-color: var(--accent-ember-500);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-ember-500) 18%, transparent);
 }
 
 .input:disabled {
@@ -53,42 +53,12 @@
 
 .invalid.input:focus-visible,
 .invalid .input:focus-visible {
-  border-color: var(--status-danger);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-danger) 18%, transparent);
 }
 
 .size-sm { height: 28px; font-size: var(--text-sm); }
 .size-md { height: 36px; font-size: var(--text-sm); }
 .size-lg { height: 44px; font-size: var(--text-base); }
-
-.wrap::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 2px;
-  background: var(--accent-ember-500);
-  transform: scaleX(0);
-  transform-origin: center;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    transform var(--duration-slow) var(--easing-silk),
-    opacity var(--duration-base) var(--easing-silk);
-}
-
-.wrap:focus-within::after {
-  transform: scaleX(1);
-  opacity: 1;
-}
-
-.wrap.invalid::after {
-  background: var(--status-danger);
-}
-
-.wrapDisabled::after {
-  display: none;
-}
 
 .hasLeading {
   padding-left: 36px;
@@ -119,4 +89,14 @@
 
 .wrap:focus-within .leading {
   transform: translateX(-1px);
+}
+
+.noFocus .input:focus-visible {
+  box-shadow: none;
+}
+.noFocus:focus-within .icon {
+  color: var(--text-tertiary);
+}
+.noFocus:focus-within .leading {
+  transform: none;
 }
