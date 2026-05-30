@@ -18,8 +18,7 @@
   height: 100%;
   transition:
     border-color var(--duration-base) var(--easing-silk),
-    background-color var(--duration-base) var(--easing-silk),
-    box-shadow var(--duration-slow) var(--easing-silk);
+    background-color var(--duration-base) var(--easing-silk);
 }
 
 .input::placeholder {
@@ -39,9 +38,6 @@
 .input:focus-visible {
   outline: none;
   border-color: var(--accent-ember-500);
-  box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--accent-ember-500) 16%, transparent),
-    0 1px 2px color-mix(in srgb, var(--accent-ember-500) 12%, transparent);
 }
 
 .input:disabled {
@@ -57,22 +53,20 @@
 
 .invalid.input:focus-visible,
 .invalid .input:focus-visible {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--status-danger) 18%, transparent);
+  border-color: var(--status-danger);
 }
 
 .size-sm { height: 28px; font-size: var(--text-sm); }
 .size-md { height: 36px; font-size: var(--text-sm); }
 .size-lg { height: 44px; font-size: var(--text-base); }
 
-/* Edge-to-edge underline indicator on wrap */
 .wrap::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -2px;
+  bottom: -1px;
   height: 2px;
-  border-radius: 2px;
   background: var(--accent-ember-500);
   transform: scaleX(0);
   transform-origin: center;
