@@ -1,0 +1,78 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-left-width: 3px;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  margin-top: 1px;
+  color: var(--text-secondary);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: 1.4;
+  color: inherit;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* default: neutral surface + border */
+.variant-default {
+  background: var(--bg-subtle);
+  border-color: var(--border-default);
+  border-left-color: var(--border-strong);
+}
+
+/* status variants: tinted bg via color-mix of status color + surface, colored border + icon */
+.variant-info {
+  background: color-mix(in srgb, var(--status-info) 8%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--status-info) 30%, var(--bg-surface));
+  border-left-color: var(--status-info);
+}
+.variant-info .icon { color: var(--status-info); }
+
+.variant-success {
+  background: color-mix(in srgb, var(--status-success) 8%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--status-success) 30%, var(--bg-surface));
+  border-left-color: var(--status-success);
+}
+.variant-success .icon { color: var(--status-success); }
+
+.variant-warning {
+  background: color-mix(in srgb, var(--status-warning) 10%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--status-warning) 32%, var(--bg-surface));
+  border-left-color: var(--status-warning);
+}
+.variant-warning .icon { color: var(--status-warning); }
+
+.variant-danger {
+  background: color-mix(in srgb, var(--status-danger) 8%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--status-danger) 30%, var(--bg-surface));
+  border-left-color: var(--status-danger);
+}
+.variant-danger .icon { color: var(--status-danger); }

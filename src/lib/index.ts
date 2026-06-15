@@ -4,6 +4,7 @@ export * from './components/layout/Flex'
 export * from './components/layout/Stack'
 export * from './components/layout/Inline'
 export * from './components/layout/Grid'
+export * from './components/layout/AspectRatio'
 
 // Primitives
 export * from './components/primitives/Text'
@@ -28,8 +29,11 @@ export * from './components/primitives/Tooltip'
 export * from './components/primitives/Spinner'
 export * from './components/primitives/Kbd'
 export * from './components/primitives/Popover'
+export * from './components/primitives/Skeleton'
+export * from './components/primitives/Progress'
 
 // Patterns
+export * from './components/patterns/Alert'
 export * from './components/patterns/Card'
 export * from './components/patterns/Modal'
 export * from './components/patterns/Drawer'

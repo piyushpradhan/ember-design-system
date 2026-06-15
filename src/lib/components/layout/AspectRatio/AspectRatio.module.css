@@ -1,0 +1,39 @@
+.root {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ar-ratio);
+}
+
+/* padding-bottom fallback for browsers without aspect-ratio support.
+   The inner box is absolutely positioned, so the padding spacer only
+   contributes height when aspect-ratio is unsupported. */
+.root::before {
+  content: '';
+  display: block;
+  padding-bottom: var(--ar-padding);
+}
+
+@supports (aspect-ratio: 1) {
+  .root::before {
+    display: none;
+  }
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Make common direct children fill the box nicely. */
+.inner > img,
+.inner > video,
+.inner > picture,
+.inner > iframe,
+.inner > canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
