@@ -1,0 +1,32 @@
+.root {
+  display: block;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+}
+
+/*
+ * Height animation via grid-template-rows 0fr -> 1fr. The content row collapses
+ * to zero height when closed and expands to its natural height when open, which
+ * the browser can transition smoothly. The inner wrapper clips overflow so text
+ * does not spill during the transition.
+ */
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--easing-silk);
+}
+
+.content[data-state='open'] {
+  grid-template-rows: 1fr;
+}
+
+.inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    transition: none;
+  }
+}
