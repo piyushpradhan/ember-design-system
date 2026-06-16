@@ -1,0 +1,198 @@
+/* Shared menu surface + item styles for DropdownMenu, ContextMenu, Menubar.
+   Internal, non-exported module. */
+
+.content {
+  z-index: 100;
+  min-width: 180px;
+  max-width: min(92vw, 320px);
+  padding: var(--space-1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  outline: none;
+  transform-origin: var(--transform-origin, top center);
+  animation: menu-in var(--duration-base) var(--easing-silk);
+  max-height: min(80vh, 480px);
+  overflow-y: auto;
+}
+
+.content[data-side='top'] {
+  --transform-origin: bottom center;
+}
+.content[data-side='bottom'] {
+  --transform-origin: top center;
+}
+.content[data-side='left'] {
+  --transform-origin: center right;
+}
+.content[data-side='right'] {
+  --transform-origin: center left;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+}
+
+/* ---- Item ---- */
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-2);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--font-regular);
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard);
+}
+
+/* roving / active-descendant highlight */
+.item[data-highlighted='true'] {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+.item[data-disabled='true'] {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.item:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+.inset {
+  padding-left: var(--space-6);
+}
+
+.variantDanger {
+  color: var(--status-danger);
+}
+.variantDanger[data-highlighted='true'] {
+  background: color-mix(in srgb, var(--status-danger) 12%, transparent);
+  color: var(--status-danger);
+}
+
+/* leading indicator slot (checkbox/radio check, submenu spacing) */
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-4);
+  height: var(--space-4);
+  flex: 0 0 auto;
+  color: var(--accent-ember-600);
+}
+
+.itemText {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---- Label ---- */
+.label {
+  display: block;
+  padding: var(--space-2) var(--space-2);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ---- Separator ---- */
+.separator {
+  height: 1px;
+  margin: var(--space-1) calc(var(--space-1) * -1);
+  background: var(--border-subtle);
+}
+
+/* ---- Shortcut ---- */
+.shortcut {
+  margin-left: auto;
+  padding-left: var(--space-4);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+/* ---- Submenu trigger chevron ---- */
+.subChevron {
+  margin-left: auto;
+  padding-left: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-tertiary);
+}
+
+/* ---- Menubar ---- */
+.menubar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
+}
+
+.menubarTrigger {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: background var(--duration-fast) var(--easing-standard);
+}
+
+.menubarTrigger:hover {
+  background: var(--bg-muted);
+}
+
+.menubarTrigger[data-state='open'] {
+  background: var(--bg-muted);
+}
+
+.menubarTrigger:focus-visible {
+  box-shadow: var(--focus-ring);
+}
