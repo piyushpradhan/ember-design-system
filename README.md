@@ -26,14 +26,28 @@ ember accent, dual-mode (light + dark, equal priority).
 **Tokens** — color, type scale, spacing, radius, motion, elevation. All mode-aware via
 `[data-theme="light" | "dark"]` on `<html>`.
 
-**Components — 36 total**:
+**Components — 60+ total**, covering the full shadcn/ui surface, rebuilt from scratch on
+Ember tokens (CSS Modules, no Radix/Tailwind, no heavy runtime deps):
 
-- _Primitives:_ Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch,
-  Label, Badge, Tag, Avatar, Divider, Tooltip, Spinner.
-- _Patterns:_ Card, Modal, Drawer, Toast, Tabs, Accordion, Navigation (top + side),
-  Breadcrumb, Pagination, Table, Empty State, Form Field.
+- _Layout:_ Box, Flex, Stack, Inline, Grid, Aspect Ratio.
+- _Primitives:_ Text, Overline, Dot, Mark, Image, Button, IconButton, Input, Textarea,
+  Select, Checkbox, Radio, Switch, Label, Badge, Tag, Avatar, Divider, Tooltip, Spinner,
+  Kbd, Popover, Skeleton, Progress, Toggle, Toggle Group, Slider, Input OTP, Scroll Area.
+- _Patterns:_ Card, Modal (Dialog), Alert, Alert Dialog, Drawer (Sheet), Toast, Tabs,
+  Accordion, Collapsible, Navigation (top + side), Breadcrumb, Pagination, Table, Empty
+  State, Form Field, Hover Card, Dropdown Menu, Context Menu, Menubar, Command, Combobox,
+  Calendar, Date Picker, Carousel, Resizable.
 - _Editorial:_ Article Header, Pull Quote, Margin Note, Code Block, Inline Code, Footnote,
   Author Byline, Tag Cloud, Reading Progress.
+
+Every interactive component ships full keyboard support, ARIA roles, focus management,
+controlled/uncontrolled state, dual-mode tokens, and unit tests. Floating components
+(Popover, menus, hover card, combobox, date picker) share one in-house positioning engine
+(`useFloating`) — no `@floating-ui` or other external dependency.
+
+> **Note on Chart:** shadcn's Chart is a thin Recharts wrapper. It's intentionally omitted —
+> pulling a heavy charting dependency would break this system's "from scratch, no heavy
+> deps" stance. Wire your charting lib of choice into an Ember `Card` instead.
 
 ## Develop
 
