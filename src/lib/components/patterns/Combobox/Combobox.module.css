@@ -1,0 +1,93 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-width: 200px;
+  height: 38px;
+  padding: 0 var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--easing-silk),
+    background-color var(--duration-fast) var(--easing-silk);
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.trigger:disabled {
+  background: var(--bg-subtle);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.trigger[data-placeholder] .triggerLabel {
+  color: var(--text-tertiary);
+}
+
+.triggerLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerIcon {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+
+/* The Popover already supplies the surface chrome; the inner Command should be
+   transparent so it doesn't double up borders/shadows. */
+.panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.command {
+  border: none;
+  box-shadow: none;
+  border-radius: inherit;
+  background: transparent;
+}
+
+.check {
+  flex-shrink: 0;
+  color: var(--accent-ember-600);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--easing-silk);
+}
+
+.checkVisible {
+  opacity: 1;
+}
+
+.optionLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .check {
+    transition: none;
+  }
+}

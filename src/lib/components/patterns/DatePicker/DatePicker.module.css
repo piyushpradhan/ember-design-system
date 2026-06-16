@@ -1,0 +1,22 @@
+.root {
+  display: inline-block;
+}
+
+.trigger {
+  min-width: 220px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.trigger > span:last-child {
+  flex: 1;
+}
+
+.placeholder {
+  color: var(--text-tertiary);
+  font-weight: var(--font-regular);
+}
+
+.content {
+  padding: 0;
+}

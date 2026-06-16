@@ -1,0 +1,127 @@
+.root {
+  display: inline-block;
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0 var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.captionLabel {
+  flex: 1;
+  text-align: center;
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.grid {
+  outline: none;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: var(--space-1);
+}
+
+.weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 36px;
+  font-size: var(--text-2xs);
+  font-weight: var(--font-medium);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.empty {
+  height: 36px;
+  width: 36px;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  margin: 1px 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--font-regular);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard);
+}
+
+.day:hover:not(:disabled) {
+  background: var(--bg-muted);
+}
+
+.day:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.day:disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.outside {
+  color: var(--text-tertiary);
+}
+
+.today {
+  font-weight: var(--font-semibold);
+  color: var(--accent-ember-600);
+}
+
+.inRange {
+  background: var(--accent-ember-50);
+  border-radius: 0;
+}
+
+.selected,
+.selected:hover:not(:disabled) {
+  background: var(--accent-ember-600);
+  color: #fff;
+  font-weight: var(--font-medium);
+}
+
+.selected.today {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .day {
+    transition: none;
+  }
+}

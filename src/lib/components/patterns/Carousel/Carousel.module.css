@@ -1,0 +1,81 @@
+.root {
+  position: relative;
+  display: block;
+}
+
+/* Scroll-snap track. */
+.viewport {
+  display: flex;
+  gap: var(--space-4);
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal {
+  flex-direction: row;
+  scroll-snap-type: x mandatory;
+}
+
+.vertical {
+  flex-direction: column;
+  max-height: 320px;
+  scroll-snap-type: y mandatory;
+}
+
+.item {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.vertical .item {
+  flex-basis: auto;
+}
+
+/* Prev / next controls — positioned over the viewport edges. */
+.control {
+  position: absolute;
+  z-index: 2;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--duration-base) var(--easing-silk),
+    box-shadow var(--duration-base) var(--easing-silk);
+}
+
+.control:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.control:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Horizontal placement (default). */
+.prev {
+  top: 50%;
+  left: var(--space-2);
+  transform: translateY(-50%);
+}
+
+.next {
+  top: 50%;
+  right: var(--space-2);
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    scroll-behavior: auto;
+  }
+}
