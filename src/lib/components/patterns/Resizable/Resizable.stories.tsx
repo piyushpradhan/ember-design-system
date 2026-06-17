@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './Resizable'
 
-const meta = {
+const meta: Meta<typeof ResizablePanelGroup> = {
   title: 'Patterns/Resizable',
   component: ResizablePanelGroup,
   parameters: { layout: 'centered' },
-} satisfies Meta<typeof ResizablePanelGroup>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof ResizablePanelGroup>
 
 const panelBody = {
   display: 'flex',

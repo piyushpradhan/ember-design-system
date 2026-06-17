@@ -13,14 +13,14 @@ import {
 } from './AlertDialog'
 import { Button } from '../../primitives/Button'
 
-const meta = {
+const meta: Meta<typeof AlertDialog> = {
   title: 'Patterns/AlertDialog',
   component: AlertDialog,
   parameters: { layout: 'centered' },
-} satisfies Meta<typeof AlertDialog>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof AlertDialog>
 
 export const Default: Story = {
   render: () => (

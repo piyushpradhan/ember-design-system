@@ -4,14 +4,14 @@ import { ChevronsUpDown } from 'lucide-react'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './Collapsible'
 import { Button } from '../../primitives/Button'
 
-const meta = {
+const meta: Meta<typeof Collapsible> = {
   title: 'Patterns/Collapsible',
   component: Collapsible,
   parameters: { layout: 'centered' },
-} satisfies Meta<typeof Collapsible>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof Collapsible>
 
 const panelStyle = {
   marginTop: 'var(--space-2)',

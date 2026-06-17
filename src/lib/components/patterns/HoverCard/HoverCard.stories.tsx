@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HoverCard, HoverCardTrigger, HoverCardContent } from './HoverCard'
 import { Button } from '../../primitives/Button'
 
-const meta = {
+const meta: Meta<typeof HoverCard> = {
   title: 'Patterns/HoverCard',
   component: HoverCard,
   parameters: { layout: 'centered' },
-} satisfies Meta<typeof HoverCard>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof HoverCard>
 
 export const Default: Story = {
   render: () => (
